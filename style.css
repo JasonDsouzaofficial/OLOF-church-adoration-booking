@@ -1,67 +1,53 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+body {
   font-family: Arial, sans-serif;
-  color: #004080;
-  overflow: auto;
-}
-
-.background {
   background: url('assets/church.jpg') no-repeat center center fixed;
   background-size: cover;
-  filter: blur(6px);
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: -1;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-container {
-  max-width: 480px;
-  margin: 60px auto;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: saturate(180%) blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
   border-radius: 15px;
-  padding: 30px 40px;
+  width: 350px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
   text-align: center;
+  color: #004080;
 }
 
 h1, h2 {
-  margin: 0 0 15px;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
+  text-align: left;
   margin-top: 15px;
   font-weight: bold;
-  text-align: left;
-  color: #003366;
 }
 
 input, select, button {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  border-radius: 8px;
-  border: 1.5px solid #004080;
-  font-size: 1rem;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
-input:focus, select:focus {
-  border-color: #007acc;
-  outline: none;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
 }
 
 button {
-  margin-top: 25px;
+  margin-top: 20px;
   background-color: #004080;
   color: white;
-  font-weight: 600;
-  border: none;
   cursor: pointer;
+  border: none;
   transition: background-color 0.3s ease;
 }
 
@@ -69,16 +55,15 @@ button:hover {
   background-color: #0066cc;
 }
 
-#confirmation {
-  background-color: #d4edda;
-  border: 1px solid #28a745;
-  color: #155724;
-  padding: 25px 20px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
 .hidden {
   display: none;
+}
+
+#confirmation {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 10px;
 }
