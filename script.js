@@ -14,13 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
   maxDate.setMonth(maxDate.getMonth() + 1);
   dateInput.max = maxDate.toISOString().split('T')[0];
 
-  // Populate time slots from 7 AM to 7 PM
-  for (let hour = 7; hour <= 19; hour++) {
-    const label = hour < 12 ? `${hour} AM` : (hour === 12 ? '12 PM' : `${hour - 12} PM`);
+  // Populate time slots from 7 AM to 7 PM in 1-hour blocks
+  for (let hour = 7; hour < 19; hour++) {
+    const startLabel = formatHourLabel(hour);
+    const endLabel = formatHourLabel(hour + 1);
+    const displayLabel = `${startLabel}-${endLabel}`;
+    const value = `${String(hour).padStart(2, '0')}:00`; // e.g., "07:00"
+
     const option = document.createElement('option');
-    option.value = label;
-    option.textContent = label;
+    option.value = value;
+    option.textContent = displayLabel;
     slotSelect.appendChild(option);
+  }
+
+  function formatHourLabel(hour) {
+    const isPM = hour >= 12;
+    const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+    const period = isPM ? 'pm' : 'am';
+    return `${displayHour}${period}`;
   }
 
   form.addEventListener('submit', async (e) => {
@@ -56,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Date:</strong> ${date}</p>
-        <p><strong>Time Slot:</strong> ${time}</p>
+        <p><strong>Time Slot:</strong> ${slotSelect.options[slotSelect.selectedIndex].text}</p>
         <p><strong>This is not the confirmed booking.</strong><br>
         You will receive a confirmation email within 1 day based on slot availability.</p>
         <p>If you receive an email stating the slot is already booked, kindly book another available slot for another day.</p>
