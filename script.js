@@ -38,16 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetch('https://script.google.com/macros/s/AKfycbz8B5Ndc-9iGcvwKNGwMZ-ibcTv4vWAK4KqLAemLTVa5xPa0Rb4eGFB4VHTeJDDArJR/exec', {
       method: 'POST',
-      mode: 'no-cors', // Avoid CORS issues, but no response returned
+      mode: 'no-cors', // no-cors to avoid CORS issues, but no response available
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
     }).catch(() => {
-      // Ignore errors because we cannot access response with no-cors
+      // Ignore fetch errors here due to no-cors mode
     });
 
-    // Show confirmation immediately
+    // Show confirmation immediately and hide form
     form.style.display = 'none';
     confirmationDiv.classList.remove('hidden');
     confirmationDiv.innerHTML = `
