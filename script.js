@@ -1,72 +1,58 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbxHxP4aBWp84rwxnfafFEGtRDk8lYXWc5BsYbN7msE080-w3eyuMpEfZwGsfStbSfoQ/exec";
+document.addEventListener('DOMContentLoaded', () => {
+  const slotSelect = document.getElementById('slot');
+  const today = new Date();
+  const dateInput = document.getElementById('date');
+  const form = document.getElementById('bookingForm');
+  const confirmationDiv = document.getElementById('confirmation');
 
-const form = document.getElementById("bookingForm");
-const slotDropdown = document.getElementById("slot");
-const confirmation = document.getElementById("confirmation");
-const dateInput = document.getElementById("date");
+  // Set min and max dates
+  dateInput.min = today.toISOString().split('T')[0];
+  const maxDate = new Date(today);
+  maxDate.setMonth(today.getMonth() + 1);
+  dateInput.max = maxDate.toISOString().split('T')[0];
 
-// Set min and max booking dates
-const today = new Date();
-const maxDate = new Date();
-maxDate.setMonth(maxDate.getMonth() + 1);
+  // Populate slot dropdown from 7 AM to 7 PM
+  for (let hour = 7; hour <= 19; hour++) {
+    const time = `${hour.toString().padStart(2, '0')}:00`;
+    const option = document.createElement('option');
+    option.value = time;
+    option.textContent = time;
+    slotSelect.appendChild(option);
+  }
 
-dateInput.min = today.toISOString().split("T")[0];
-dateInput.max = maxDate.toISOString().split("T")[0];
-
-// Generate slots from 7AM to 7PM
-function generateSlots() {
-    slotDropdown.innerHTML = "";
-    for (let hour = 7; hour < 19; hour++) {
-        const start = `${hour.toString().padStart(2, "0")}:00`;
-        const end = `${(hour + 1).toString().padStart(2, "0")}:00`;
-        const option = document.createElement("option");
-        option.value = `${start} - ${end}`;
-        option.textContent = `${start} - ${end}`;
-        slotDropdown.appendChild(option);
-    }
-}
-
-generateSlots();
-
-form.addEventListener("submit", (e) => {
+  // Handle form submission
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const date = dateInput.value;
-    const time = slotDropdown.value;
+    const name = document.getElementById('name').value.trim();
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('slot').value;
 
-    if (!name || !date || !time) {
-        alert("Please fill in all the fields.");
-        return;
-    }
+    const payload = { name, date, time };
 
-    const bookingData = { name, date, time };
-
-    fetch(scriptURL, {
-        method: "POST",
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbz8B5Ndc-9iGcvwKNGwMZ-ibcTv4vWAK4KqLAemLTVa5xPa0Rb4eGFB4VHTeJDDArJR/exec', {
+        method: 'POST',
+        mode: 'no-cors',
         headers: {
-            "Content-Type": "application/json",
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(bookingData),
-    })
-        .then((response) => response.json())
-        .then((res) => {
-            if (res.status === "success") {
-                form.classList.add("hidden");
-                confirmation.classList.remove("hidden");
-                confirmation.innerHTML = `
-                    <h3>Booking Confirmed!</h3>
-                    <p><strong>Name:</strong> ${name}</p>
-                    <p><strong>Date:</strong> ${date}</p>
-                    <p><strong>Time:</strong> ${time}</p>
-                    <p>Please take a screenshot of this confirmation for your reference.</p>
-                `;
-            } else {
-                alert(res.message || "Slot is already booked. Please select another.");
-            }
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-            alert("Error: Failed to connect. Please try again later.");
-        });
+        body: JSON.stringify(payload)
+      });
+
+      // Show confirmation message
+      form.classList.add('hidden');
+      confirmationDiv.classList.remove('hidden');
+      confirmationDiv.innerHTML = `
+        <h3>Thank you, ${name}!</h3>
+        <p>Your adoration slot has been submitted for:</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Time:</strong> ${time}</p>
+        <p>Please take a screenshot of this confirmation for your reference.</p>
+      `;
+    } catch (error) {
+      console.error('Booking error:', error);
+      alert('Something went wrong. Please try again later.');
+    }
+  });
 });
