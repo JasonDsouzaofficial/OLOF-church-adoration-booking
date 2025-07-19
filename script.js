@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
   body: JSON.stringify({
     name: name,
     date: date,
-    time: time
+    time: slot
   }),
   headers: {
     "Content-Type": "application/json"
