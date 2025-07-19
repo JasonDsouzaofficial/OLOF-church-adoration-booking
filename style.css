@@ -1,40 +1,40 @@
-body {
-  font-family: Arial, sans-serif;
+/* Background image and overlay */
+body, html {
+  height: 100%;
   margin: 0;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: url('assets/church.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .background {
-  background: url('assets/church.jpg') no-repeat center center fixed;
-  background-size: cover;
-  filter: brightness(0.7);
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
   z-index: -1;
 }
 
 .form-container {
-  max-width: 400px;
+  max-width: 450px;
   margin: 80px auto;
-  background: rgba(255, 255, 255, 0.9); /* mostly solid white */
+  background: white; /* solid white, not transparent */
+  border-radius: 12px;
   padding: 30px 25px;
-  border-radius: 15px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
-  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
 }
 
 h1, h2 {
+  text-align: center;
   color: #004080;
-  margin-bottom: 15px;
+  margin: 10px 0;
 }
 
 label {
   display: block;
-  font-weight: bold;
   margin-top: 15px;
-  text-align: left;
+  font-weight: bold;
 }
 
 input, select, button {
@@ -45,7 +45,6 @@ input, select, button {
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 1rem;
-  box-sizing: border-box;
 }
 
 button {
@@ -53,8 +52,8 @@ button {
   color: white;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -66,12 +65,12 @@ button:hover {
 }
 
 #confirmation {
-  margin-top: 20px;
-  background-color: #e6f4ea;
-  border: 2px solid #4caf50;
-  padding: 25px;
-  border-radius: 12px;
-  color: #2e7d32;
+  background-color: #d4edda;
+  border: 1px solid #28a745;
+  color: #155724;
   font-weight: bold;
-  font-size: 1.1rem;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 20px;
 }
