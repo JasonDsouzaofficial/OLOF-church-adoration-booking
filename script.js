@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Populate time slots from 7 AM to 7 PM
   for (let hour = 7; hour <= 19; hour++) {
     const label = hour < 12 ? `${hour} AM` : (hour === 12 ? '12 PM' : `${hour - 12} PM`);
-    const value = hour < 10 ? `0${hour}:00` : `${hour}:00`;
     const option = document.createElement('option');
     option.value = label;
     option.textContent = label;
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       await fetch('https://script.google.com/macros/s/AKfycbzCaIKZSWKfYaeweWw7Az61OjsNXa4IzN_2LdaBK-7U8SkqopEKuEMt9HIL9UojVnmm/exec', {
         method: 'POST',
-        mode: 'no-cors',  // no-cors to avoid CORS errors, but no response readable
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -50,12 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
       form.classList.add('hidden');
       confirmationDiv.classList.remove('hidden');
       confirmationDiv.innerHTML = `
-        <h3>Booking Confirmed</h3>
+        <h3>Booking Request Received</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Date:</strong> ${date}</p>
         <p><strong>Time Slot:</strong> ${time}</p>
-        <p>Please take a screenshot of this confirmation.</p>
+        <p><strong>This is not the confirmed booking.</strong><br>
+        You will receive the confirmation on email within 1 day.</p>
+        <p>Please take a screenshot of this message for your reference.</p>
       `;
     } catch (error) {
       alert('Booking failed. Please try again later.');
