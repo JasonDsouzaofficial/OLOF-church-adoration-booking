@@ -22,10 +22,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL';
 
-        fetch(scriptURL, {
-            method: 'POST',
-            body: new FormData(bookingForm)
-        })
+        fetch("YOUR_WEB_APP_URL", {
+  method: "POST",
+  body: JSON.stringify({
+    name: name,
+    date: date,
+    time: time
+  }),
+  headers: {
+    "Content-Type": "application/json"
+  }
+})
         .then(response => response.text())
         .then(responseText => {
             bookingForm.style.display = "none";
