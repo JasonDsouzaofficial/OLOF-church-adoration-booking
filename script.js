@@ -32,28 +32,35 @@ document.addEventListener("DOMContentLoaded", function () {
         const slot = slotSelect.value;
 
         fetch(scriptURL, {
-            method: "POST",
-            body: JSON.stringify({
-                name: name,
-                date: date,
-                time: slot
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(response => response.text())
-        .then(responseText => {
-            bookingForm.style.display = "none";
-            confirmation.classList.remove("hidden");
-            confirmation.innerHTML = `
-                <h3>Booking Confirmed</h3>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Date:</strong> ${date}</p>
-                <p><strong>Time Slot:</strong> ${slot}</p>
-                <p>Please take a screenshot of this confirmation.</p>
-            `;
-        })
-        .catch(error => alert("Error occurred. Please try again later."));
-    });
+  method: "POST",
+  body: JSON.stringify({ name, date, time: slot }),
+  headers: { "Content-Type": "application/json" }
+})
+.then(async response => {
+  const text = await response.text();
+  try {
+    const json = JSON.parse(text);
+    if (json.status === "error") {
+      throw new Error(json.message);
+    }
+    return json;
+  } catch {
+    throw new Error("Unexpected server response: " + text);
+  }
+})
+.then(data => {
+  bookingForm.style.display = "none";
+  confirmation.classList.remove("hidden");
+  confirmation.innerHTML = `
+    <h3>Booking Confirmed</h3>
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Date:</strong> ${date}</p>
+    <p><strong>Time Slot:</strong> ${slot}</p>
+    <p>Please take a screenshot of this confirmation.</p>
+  `;
+})
+.catch(error => {
+  alert("Error: " + error.message);
+  console.error("Booking error:", error);
 });
+
