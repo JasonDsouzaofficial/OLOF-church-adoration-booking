@@ -3,58 +3,63 @@ document.addEventListener('DOMContentLoaded', () => {
   const dateInput = document.getElementById('date');
   const form = document.getElementById('bookingForm');
   const confirmationDiv = document.getElementById('confirmation');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
 
-  // Set date min = today, max = 1 month from today
+  // Set min and max dates for date input (today to +1 month)
   const today = new Date();
   dateInput.min = today.toISOString().split('T')[0];
+
   const maxDate = new Date(today);
   maxDate.setMonth(maxDate.getMonth() + 1);
   dateInput.max = maxDate.toISOString().split('T')[0];
 
   // Populate time slots 7 AM to 7 PM
-  for (let h = 7; h <= 19; h++) {
-    const label = h < 12 ? `${h} AM` : h === 12 ? '12 PM' : `${h - 12} PM`;
-    const value = (h < 10 ? '0' + h : h) + ':00';
+  for (let hour = 7; hour <= 19; hour++) {
+    const label = (hour < 12 ? hour + ' AM' : (hour === 12 ? '12 PM' : (hour - 12) + ' PM'));
     const option = document.createElement('option');
-    option.value = value;
+    option.value = label;
     option.textContent = label;
     timeSelect.appendChild(option);
   }
 
-  // Form submit handler
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const date = dateInput.value;
+    const time = timeSelect.value;
+
+    if (!name || !email || !date || !time) {
+      alert('Please fill all fields.');
+      return;
+    }
 
     const payload = { name, email, date, time };
 
     try {
-      await fetch('https://script.google.com/macros/s/AKfycb8B5Ndc-9iGcvwKNGwMZ-ibcTv4vWAK4KqLAemLTVa5xPa0Rb4eGFB4VHTeJDDArJR/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycbz8B5Ndc-9iGcvwKNGwMZ-ibcTv4vWAK4KqLAemLTVa5xPa0Rb4eGFB4VHTeJDDArJR/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(payload)
       });
 
-      // Hide form and show confirmation
       form.classList.add('hidden');
       confirmationDiv.classList.remove('hidden');
       confirmationDiv.innerHTML = `
         <h3>Thank you, ${name}!</h3>
-        <p>Your adoration slot has been submitted for:</p>
+        <p>Your adoration slot has been booked for:</p>
         <p><strong>Date:</strong> ${date}</p>
         <p><strong>Time:</strong> ${time}</p>
-        <p>Please check your email for confirmation once available.</p>
+        <p>Please take a screenshot of this confirmation for your records.</p>
       `;
     } catch (error) {
-      alert('Something went wrong. Please try again later.');
       console.error('Booking error:', error);
+      alert('Something went wrong. Please try again later.');
     }
   });
 });
