@@ -1,3 +1,4 @@
+/* Set full background with image */
 body {
   margin: 0;
   padding: 0;
@@ -6,17 +7,19 @@ body {
   background-size: cover;
 }
 
+/* Overlay to help center content */
 .overlay {
-  background-color: rgba(0, 0, 0, 0.4);
   min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
 
+/* White box form */
 .form-container {
-  background: white; /* Solid white */
+  background: #ffffff;
   padding: 30px;
   border-radius: 16px;
   max-width: 500px;
@@ -27,6 +30,7 @@ body {
 
 h1, h2 {
   color: #004080;
+  margin: 0 0 20px;
 }
 
 label {
@@ -43,6 +47,7 @@ input, select, button {
   margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 button {
