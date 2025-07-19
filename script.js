@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Your latest Google Apps Script URL here
-  const scriptURL = "https://script.google.com/macros/s/AKfycbz0AhiSa39sS7OVse0g2XF9Qxg_p7sBCa0jhtUW4VOJWZuT035l9rAXYQ2vMmtSr3qH/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxHxP4aBWp84rwxnfafFEGtRDk8lYXWc5BsYbN7msE080-w3eyuMpEfZwGsfStbSfoQ/exec";
 
   bookingForm.addEventListener("submit", function (e) {
     e.preventDefault();
