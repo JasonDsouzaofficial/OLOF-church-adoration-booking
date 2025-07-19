@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         slotSelect.appendChild(option);
     }
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyK3Db0Z_Re1kYz1j4RDRroC28BZoIzdGzwOjFRgKGYNH9ageZ2SQsPrgc564nL8AXn/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbz0AhiSa39sS7OVse0g2XF9Qxg_p7sBCa0jhtUW4VOJWZuT035l9rAXYQ2vMmtSr3qH/exec";
 
     bookingForm.addEventListener("submit", function (e) {
         e.preventDefault();
