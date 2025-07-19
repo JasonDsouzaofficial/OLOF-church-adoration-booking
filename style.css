@@ -1,27 +1,31 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  background: url('assets/church.jpg') no-repeat center center fixed;
-  background-size: cover;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
 }
 
-.overlay {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
+.background {
+  background-image: url('assets/church.jpg');
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: -1;
+  filter: blur(5px);
 }
 
 .form-container {
   background: white;
-  padding: 30px;
-  border-radius: 15px;
   max-width: 500px;
-  width: 90%;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  margin: 80px auto;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(0px);
 }
 
 h1, h2 {
@@ -30,24 +34,26 @@ h1, h2 {
 }
 
 label {
+  font-weight: bold;
   display: block;
   margin-top: 15px;
-  font-weight: bold;
 }
 
 input, select, button {
   width: 100%;
   padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border-radius: 5px;
+  margin-top: 6px;
+  margin-bottom: 18px;
+  border-radius: 6px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 button {
   background: #004080;
   color: white;
   cursor: pointer;
+  font-weight: bold;
   transition: background 0.3s ease;
 }
 
@@ -55,18 +61,12 @@ button:hover {
   background: #0066cc;
 }
 
-.hidden {
-  display: none;
-}
-
-#confirmation {
-  background-color: #e6ffed;
-  border: 1px solid #4caf50;
-  padding: 20px;
-  border-radius: 10px;
+.confirmation-box {
+  background-color: #e6f4ea;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 128, 0, 0.2);
   color: #2e7d32;
-  font-weight: bold;
+  font-family: 'Segoe UI', sans-serif;
   text-align: center;
-  max-width: 500px;
-  margin: auto;
 }
