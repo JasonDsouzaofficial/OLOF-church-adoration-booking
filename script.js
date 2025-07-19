@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL';
 
-        fetch("YOUR_WEB_APP_URL", {
+        fetch("https://script.google.com/macros/s/AKfycbyK3Db0Z_Re1kYz1j4RDRroC28BZoIzdGzwOjFRgKGYNH9ageZ2SQsPrgc564nL8AXn/exec", {
   method: "POST",
   body: JSON.stringify({
     name: name,
