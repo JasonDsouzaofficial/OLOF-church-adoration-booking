@@ -1,38 +1,39 @@
-/* Full height and center the form container */
-html, body {
-  height: 100%;
+body {
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
   background: url('assets/church.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #333;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
-/* White solid background container */
 .form-container {
-  background-color: white;  /* solid white, no transparency */
+  background: white; /* Solid white */
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  max-width: 400px;
+  border-radius: 16px;
+  max-width: 500px;
   width: 100%;
-  box-sizing: border-box;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   text-align: center;
 }
 
 h1, h2 {
   color: #004080;
-  margin-bottom: 15px;
 }
 
 label {
   display: block;
+  text-align: left;
   margin-top: 15px;
   font-weight: bold;
-  text-align: left;
 }
 
 input, select, button {
@@ -42,36 +43,29 @@ input, select, button {
   margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  font-size: 1rem;
-  box-sizing: border-box;
 }
 
 button {
   background-color: #004080;
   color: white;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
   border: none;
+  cursor: pointer;
 }
 
 button:hover {
   background-color: #0066cc;
 }
 
-/* Confirmation box styling */
-#confirmation {
-  background-color: #d4edda;  /* Light green */
-  border: 1px solid #28a745;  /* Green */
-  color: #155724;              /* Dark green */
-  padding: 20px;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-align: center;
-}
-
-/* Hidden class */
 .hidden {
   display: none;
+}
+
+#confirmation {
+  background-color: #e6f4ea;
+  border: 1px solid #4caf50;
+  color: #2e7d32;
+  padding: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
 }
