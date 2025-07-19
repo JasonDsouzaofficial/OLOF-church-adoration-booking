@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Our Lady of Fatima Church, Sewri - Adoration Booking</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Our Lady of Fatima Church, Sewri - Adoration Booking</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="overlay">
-    <div class="form-container">
-      <h1>Our Lady of Fatima Church, Sewri</h1>
-      <h2>Adoration Booking</h2>
+    <div class="overlay">
+        <div class="form-container" id="formContainer">
+            <h1>Our Lady of Fatima Church, Sewri</h1>
+            <h2>Adoration Booking</h2>
+            <form id="bookingForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-      <form id="bookingForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
+                <label for="date">Date (up to 1 month in advance):</label>
+                <input type="date" id="date" name="date" required>
 
-        <label for="date">Date (up to 1 month in advance):</label>
-        <input type="date" id="date" name="date" required />
+                <label for="slot">Select Time Slot:</label>
+                <select id="slot" name="slot" required></select>
 
-        <label for="slot">Select Time Slot:</label>
-        <select id="slot" name="slot" required></select>
-
-        <button type="submit">Book Slot</button>
-      </form>
-
-      <div id="confirmation" class="hidden"></div>
+                <button type="submit">Book Slot</button>
+            </form>
+        </div>
+        <div id="confirmation" class="hidden"></div>
     </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

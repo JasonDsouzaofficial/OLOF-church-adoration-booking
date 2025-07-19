@@ -1,41 +1,36 @@
-/* Set full background with image */
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
   background: url('assets/church.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
-/* Overlay to help center content */
 .overlay {
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
-/* White box form */
 .form-container {
-  background: #ffffff;
+  background: white;
   padding: 30px;
-  border-radius: 16px;
+  border-radius: 15px;
   max-width: 500px;
-  width: 100%;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  text-align: center;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 h1, h2 {
+  text-align: center;
   color: #004080;
-  margin: 0 0 20px;
 }
 
 label {
   display: block;
-  text-align: left;
   margin-top: 15px;
   font-weight: bold;
 }
@@ -47,18 +42,17 @@ input, select, button {
   margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  box-sizing: border-box;
 }
 
 button {
-  background-color: #004080;
+  background: #004080;
   color: white;
-  border: none;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 button:hover {
-  background-color: #0066cc;
+  background: #0066cc;
 }
 
 .hidden {
@@ -66,11 +60,13 @@ button:hover {
 }
 
 #confirmation {
-  background-color: #e6f4ea;
+  background-color: #e6ffed;
   border: 1px solid #4caf50;
-  color: #2e7d32;
   padding: 20px;
   border-radius: 10px;
+  color: #2e7d32;
   font-weight: bold;
   text-align: center;
+  max-width: 500px;
+  margin: auto;
 }

@@ -1,54 +1,39 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const slotSelect = document.getElementById('slot');
-  const today = new Date();
-  const dateInput = document.getElementById('date');
-  const form = document.getElementById('bookingForm');
-  const confirmationDiv = document.getElementById('confirmation');
+const form = document.getElementById('bookingForm');
+const slotSelect = document.getElementById('slot');
+const confirmation = document.getElementById('confirmation');
+const formContainer = document.getElementById('formContainer');
 
-  // Set min and max dates
-  dateInput.min = today.toISOString().split('T')[0];
-  const maxDate = new Date(today);
-  maxDate.setMonth(today.getMonth() + 1);
-  dateInput.max = maxDate.toISOString().split('T')[0];
+const timeSlots = [];
+for (let hour = 7; hour <= 18; hour++) {
+    timeSlots.push(`${hour.toString().padStart(2, '0')}:00 - ${(hour + 1).toString().padStart(2, '0')}:00`);
+}
 
-  // Populate slot dropdown from 7 AM to 7 PM
-  for (let hour = 7; hour <= 19; hour++) {
-    const time = `${hour.toString().padStart(2, '0')}:00`;
+timeSlots.forEach(slot => {
     const option = document.createElement('option');
-    option.value = time;
-    option.textContent = time;
+    option.value = slot;
+    option.textContent = slot;
     slotSelect.appendChild(option);
-  }
+});
 
-  // Handle form submission
-  form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
+    
+    const name = document.getElementById('name').value;
     const date = document.getElementById('date').value;
     const time = document.getElementById('slot').value;
 
-    const payload = { name, date, time };
-
-    try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbz8B5Ndc-9iGcvwKNGwMZ-ibcTv4vWAK4KqLAemLTVa5xPa0Rb4eGFB4VHTeJDDArJR/exec', {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbz8B5Ndc-9iGcvwKNGwMZ-ibcTv4vWAK4KqLAemLTVa5xPa0Rb4eGFB4VHTeJDDArJR/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
+        body: JSON.stringify({ name, date, time })
+    });
 
-      form.classList.add('hidden');
-      confirmationDiv.classList.remove('hidden');
-      confirmationDiv.innerHTML = `
-        <h3>Thank you, ${name}!</h3>
-        <p>Your adoration slot has been submitted for:</p>
-        <p><strong>Date:</strong> ${date}</p>
-        <p><strong>Time:</strong> ${time}</p>
-        <p>Please take a screenshot of this confirmation for your reference.</p>
-      `;
-    } catch (error) {
-      console.error('Booking error:', error);
-      alert('Something went wrong. Please try again later.');
+    const result = await response.json();
+    if (result.status === 'success') {
+        formContainer.style.display = 'none';
+        confirmation.textContent = `Booking Confirmed for ${name} on ${date} at ${time}. Please take a screenshot for your reference.`;
+        confirmation.classList.remove('hidden');
+    } else {
+        alert(result.message || 'Something went wrong. Please try again.');
     }
-  });
 });
