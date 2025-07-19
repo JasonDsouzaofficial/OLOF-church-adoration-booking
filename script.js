@@ -1,13 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
   const slotSelect = document.getElementById('time');
-  const today = new Date();
   const dateInput = document.getElementById('date');
   const form = document.getElementById('bookingForm');
   const confirmationDiv = document.getElementById('confirmation');
 
-  // Set min and max dates (today to +1 month)
-  dateInput.min = today.toISOString().split('T')[0];
-  const maxDate = new Date(today);
+  // Set min and max dates (tomorrow to one month from tomorrow)
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  dateInput.min = tomorrow.toISOString().split('T')[0];
+
+  const maxDate = new Date(tomorrow);
   maxDate.setMonth(maxDate.getMonth() + 1);
   dateInput.max = maxDate.toISOString().split('T')[0];
 
