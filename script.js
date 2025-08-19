@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(payload)
       });
 
-      // Hide form and show confirmation
+      // For Hide form and show confirmation
       form.classList.add('hidden');
       confirmationDiv.classList.remove('hidden');
       confirmationDiv.innerHTML = `
