@@ -10,7 +10,20 @@
   <link href="https://fonts.cdnfonts.com/css/chomsky" rel="stylesheet">
 
   <style>
-    /* Quote styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+
+    .background {
+      background: url('assets/your-bg-image.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centers horizontally */
+      padding: 20px;
+    }
+
     .quote-overlay {
       text-align: center;
       color: #fff;
@@ -18,9 +31,8 @@
       font-size: 1.5em;
       line-height: 1.4;
       max-width: 90%;
-      margin: 0 auto;
-      padding: 20px 10px 10px;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+      margin-bottom: 20px;
     }
     .quote-overlay .quote-ref {
       display: block;
@@ -28,17 +40,37 @@
       margin-top: 6px;
       opacity: 0.9;
     }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 350px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+      .quote-overlay {
+        font-size: 1.2em;
+      }
+      .form-container {
+        max-width: 90%;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="background">
-    <!-- Add quote ABOVE the form-container -->
+    <!-- Quote -->
     <div class="quote-overlay">
       “Thus says the LORD, He who created you, O Jacob, He who formed you, O Israel,
       <em>Fear not, for I have redeemed you, I have called you by name, you are mine.</em>”
       <span class="quote-ref">Isaiah 43:1</span>
     </div>
 
+    <!-- Form -->
     <div class="form-container">
       <h1>Our Lady of Fatima Church, Sewri</h1>
       <div style="text-align: center; margin: 10px 0;">
