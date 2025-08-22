@@ -51,12 +51,25 @@
     }
 
     /* Responsive Adjustments */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .quote-overlay {
-        font-size: 1.2em;
+        font-size: 1.2em; /* reduce size for smaller screens */
+        padding: 0 10px;  /* add horizontal padding */
       }
       .form-container {
-        max-width: 90%;
+        max-width: 90%; /* shrink width to fit */
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .quote-overlay {
+        font-size: 1em; /* further reduce on very small screens */
+        line-height: 1.3;
+      }
+      .form-container {
+        max-width: 95%;
+        padding: 12px;
       }
     }
   </style>
