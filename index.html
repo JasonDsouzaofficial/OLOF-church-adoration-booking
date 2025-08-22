@@ -5,45 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Our Lady of Fatima Church - Adoration Booking</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Chomsky Font -->
+  <link href="https://fonts.cdnfonts.com/css/chomsky" rel="stylesheet">
+
   <style>
-    /* Inline styles for the banner */
-    .quote-banner {
-      background-color: #004080; /* Deep blue background */
-      color: #fff; /* White text */
-      text-align: center;
-      padding: 16px 12px;
-      font-size: 1.15em;
-      font-weight: 700;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      line-height: 1.4;
+    body, html {
+      margin: 0;
+      padding: 0;
     }
-    .quote-ref {
+
+    /* Background section (already using your image from style.css) */
+    .background {
+      position: relative;
+      height: 300px; /* Adjust height as needed */
+      width: 100%;
+    }
+
+    /* Quote overlay on background */
+    .quote-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      text-align: center;
+      font-family: 'Chomsky', serif;
+      font-size: 1.5em;
+      line-height: 1.4;
+      max-width: 90%;
+      padding: 0 10px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    .quote-overlay .quote-ref {
       display: block;
-      font-size: 0.9em;
-      font-weight: 600;
-      opacity: 0.9;
+      font-size: 0.8em;
       margin-top: 6px;
+      opacity: 0.9;
+    }
+
+    .form-container {
+      padding: 20px;
+    }
+
+    /* Style for the form button */
+    button {
+      background-color: #004080;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    button:hover {
+      background-color: #003366;
     }
   </style>
 </head>
 <body>
-  <div class="background"></div>
-  <div class="form-container">
-
-    <!-- Banner Quote (Isaiah 43:1) -->
-    <div class="quote-banner">
+  <div class="background">
+    <!-- Quote overlay -->
+    <div class="quote-overlay">
       “Thus says the LORD, He who created you, O Jacob, He who formed you, O Israel,
       <em>Fear not, for I have redeemed you, I have called you by name, you are mine.</em>”
       <span class="quote-ref">Isaiah 43:1</span>
     </div>
-    <!-- End Banner -->
+  </div>
 
+  <div class="form-container">
     <h1>Our Lady of Fatima Church, Sewri</h1>
-    <div style="text-align: center; margin: 10px 0;">
-      <img src="assets/download.jpg" alt="Church Image" style="max-width: 100%; height: auto; border-radius: 8px;" />
-    </div>
     <h2>Adoration Slot Booking</h2>
     <form id="bookingForm">
       <label for="name">Your Name:</label>
