@@ -81,3 +81,27 @@ button:hover {
 .hidden {
   display: none;
 }
+
+/* --- Mobile Optimization --- */
+@media (max-width: 768px) {
+  .quote-overlay {
+    font-size: 1.2em;
+    padding: 0 10px;
+    text-align: center;
+  }
+  .form-container {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quote-overlay {
+    font-size: 1em;
+    line-height: 1.3;
+  }
+  .form-container {
+    width: 95%;
+    padding: 12px;
+  }
+}
