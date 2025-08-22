@@ -10,99 +10,67 @@
   <link href="https://fonts.cdnfonts.com/css/chomsky" rel="stylesheet">
 
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Background section (already using your image from style.css) */
-    .background {
-      position: relative;
-      height: 300px; /* Adjust height as needed */
-      width: 100%;
-    }
-
-    /* Quote overlay on background */
+    /* Quote styling */
     .quote-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff;
       text-align: center;
+      color: #fff;
       font-family: 'Chomsky', serif;
       font-size: 1.5em;
       line-height: 1.4;
       max-width: 90%;
-      padding: 0 10px;
+      margin: 0 auto;
+      padding: 20px 10px 10px;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
     }
-
     .quote-overlay .quote-ref {
       display: block;
       font-size: 0.8em;
       margin-top: 6px;
       opacity: 0.9;
     }
-
-    .form-container {
-      padding: 20px;
-    }
-
-    /* Style for the form button */
-    button {
-      background-color: #004080;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-
-    button:hover {
-      background-color: #003366;
-    }
   </style>
 </head>
 <body>
   <div class="background">
-    <!-- Quote overlay -->
+    <!-- Add quote ABOVE the form-container -->
     <div class="quote-overlay">
       “Thus says the LORD, He who created you, O Jacob, He who formed you, O Israel,
       <em>Fear not, for I have redeemed you, I have called you by name, you are mine.</em>”
       <span class="quote-ref">Isaiah 43:1</span>
     </div>
-  </div>
 
-  <div class="form-container">
-    <h1>Our Lady of Fatima Church, Sewri</h1>
-    <h2>Adoration Slot Booking</h2>
-    <form id="bookingForm">
-      <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" required />
+    <div class="form-container">
+      <h1>Our Lady of Fatima Church, Sewri</h1>
+      <div style="text-align: center; margin: 10px 0;">
+        <img src="assets/download.jpg" alt="Church Image" style="max-width: 100%; height: auto; border-radius: 8px;" />
+      </div>
+      <h2>Adoration Slot Booking</h2>
+      <form id="bookingForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required />
 
-      <label for="email">Your Email:</label>
-      <input type="email" id="email" name="email" required />
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required />
 
-      <label for="date">Select Date:</label>
-      <input type="date" id="date" name="date" required />
-      <small style="color:#004080; display:block; margin-bottom:15px;">
-        You can book only from <strong>tomorrow onwards</strong> up to <strong>1 month in advance</strong>.
-      </small>
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" name="date" required />
+        <small style="color:#004080; display:block; margin-bottom:15px;">
+          You can book only from <strong>tomorrow onwards</strong> up to <strong>1 month in advance</strong>.
+        </small>
 
-      <label for="time">Select Time Slot:</label>
-      <select id="time" name="time" required>
-        <option value="">--Select Time--</option>
-      </select>
+        <label for="time">Select Time Slot:</label>
+        <select id="time" name="time" required>
+          <option value="">--Select Time--</option>
+        </select>
 
-      <small style="color:#b30000; display:block; margin:10px 0; font-weight:500;">
-        Please press the button once and wait on-screen for 10 seconds for the booking screen to reflect.
-      </small>
+        <small style="color:#b30000; display:block; margin:10px 0; font-weight:500;">
+          Please press the button once and wait on-screen for 10 seconds for the booking screen to reflect.
+        </small>
 
-      <button type="submit">Book Slot</button>
-    </form>
-    <div id="confirmation" class="hidden"></div>
+        <button type="submit">Book Slot</button>
+      </form>
+      <div id="confirmation" class="hidden"></div>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
